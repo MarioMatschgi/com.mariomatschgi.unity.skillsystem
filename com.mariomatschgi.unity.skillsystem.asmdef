@@ -1,0 +1,15 @@
+{
+    "name": "MarioMatschgi.Unity.SkillSystem",
+    "references": [
+        "GUID:dde48cedb706e483eb2642536b12823a"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
