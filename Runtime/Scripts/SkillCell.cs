@@ -6,10 +6,12 @@ using MM.Libraries.UI;
 using TMPro;
 using UnityEngine.UI;
 
+[ExecuteAlways]
 public class SkillCell : MonoBehaviour, IPrefabListChild
 {
     [Header("General")]
     public SkillType skillType;
+    public int skillableIndex;
 
     [Header("Formatting")]
     public string nameTextFormat = "{name}";
@@ -33,9 +35,10 @@ public class SkillCell : MonoBehaviour, IPrefabListChild
         UpdateCell();
     }
 
-    public void SetupVariables(SkillType _skillType)
+    public void SetupVariables(SkillType _skillType, int _skillableIndex)
     {
         skillType = _skillType;
+        skillableIndex = _skillableIndex;
     }
     
     void Start()
@@ -45,7 +48,7 @@ public class SkillCell : MonoBehaviour, IPrefabListChild
 
     void Update()
     {
-        
+        UpdateCell();
     }
 
     #endregion
@@ -60,8 +63,9 @@ public class SkillCell : MonoBehaviour, IPrefabListChild
     public void UpdateCell()
     {
         nameText.text = nameTextFormat.Replace("{name}", skillType.GetStringValue());
-        levelText.text = levelTextFormat.Replace("{cur}", "1").Replace("{max}", "10");    // ToDo: Load stats
-        slider.value = .43f;    // ToDo: Load stats
+        levelText.text = levelTextFormat.Replace("{cur}", SkillCanvas.skillables[skillableIndex].skillData.GetSkill(skillType).level.ToString())
+            .Replace("{max}", SkillCanvas.skillables[skillableIndex].skillData.GetMaxSkillLevel(skillType).ToString());
+        slider.value = SkillCanvas.skillables[skillableIndex].skillData.GetSkill(skillType).xp;
     }
 
     #endregion

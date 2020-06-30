@@ -6,11 +6,12 @@ using UnityEngine;
 
 [ExecuteAlways]
 [RequireComponent(typeof(PrefabListPanel))]
-public class SkillPanel : MonoBehaviour
+public class SkillPanel : MonoBehaviour, IPrefabListChild
 {
-    // [Header("General")] 
-    //
-    //
+    [Header("General")] 
+    public int skillableIndex;
+    
+    
     // [Header("Outlets")]
 
 
@@ -20,6 +21,16 @@ public class SkillPanel : MonoBehaviour
      *  Callback Methodes
      * 
      */
+
+    public void Setup()
+    {
+        
+    }
+
+    public void SetupVariables(int _skillableIndex)
+    {
+        skillableIndex = _skillableIndex;
+    }
 
     void Start()
     {
@@ -54,7 +65,7 @@ public class SkillPanel : MonoBehaviour
     void OnStartSetup(IPrefabListChild[] _children)
     {
         for (int i = 0; i < _children.Length; i++)
-            ((SkillCell) _children[i]).SetupVariables((SkillType)(i + 1));
+            ((SkillCell) _children[i]).SetupVariables((SkillType) (i + 1), skillableIndex);
     }
 
     void Update()
