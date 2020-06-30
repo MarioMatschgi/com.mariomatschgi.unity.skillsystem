@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using MM.Attributes;
 using UnityEngine;
 
 public class SkillCanvas : MonoBehaviour
@@ -47,10 +48,18 @@ public class SkillCanvas : MonoBehaviour
 
 public enum SkillType
 {
+    [StringValue("None")]
+    None,
+    [StringValue("Crafting")]
     Crafting,
+    [StringValue("Building")]
     Building,
+    [StringValue("Foraging")]
     Foraging,
+    [StringValue("Farming")]
     Farming,
+    [StringValue("Hunting")]
     Hunting,
+    [StringValue("Experience")]
     Experience,
 }
