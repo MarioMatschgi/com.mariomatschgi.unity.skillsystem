@@ -66,6 +66,36 @@ public class SkillData
                 return null;
         }
     }
+
+    public void SetSkill(SkillType _skillType, Skill _skill)
+    {
+        switch (_skillType)
+        {
+            case SkillType.Crafting:
+                crafting = _skill;
+                break;
+            
+            case SkillType.Building:
+                building = _skill;
+                break;
+            
+            case SkillType.Foraging:
+                foraging = _skill;
+                break;
+            
+            case SkillType.Farming:
+                farming = _skill;
+                break;
+            
+            case SkillType.Hunting:
+                hunting = _skill;
+                break;
+            
+            case SkillType.Experience:
+                experience = _skill;
+                break;
+        }
+    }
     
     public int GetMaxSkillLevel(SkillType _skillType)
     {

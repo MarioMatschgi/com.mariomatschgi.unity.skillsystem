@@ -38,12 +38,6 @@ public class SkillPanel : MonoBehaviour, IPrefabListChild
 
         if (!Application.isPlaying)    // BC: ExecuteAllways
             return;
-
-        // for (int i = 0; i < transform.childCount; i++)
-        //     Destroy(transform.GetChild(i));
-        //
-        // foreach (SkillType _skillType in Enum.GetValues(typeof(SkillType)))
-        //     Instantiate(cellPrefab, transform).GetComponent<SkillCell>().Setup(_skillType);
     }
 
     void OnEnable()
