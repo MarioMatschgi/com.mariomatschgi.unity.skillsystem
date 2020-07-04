@@ -37,16 +37,6 @@ public class ExamplePlayer : MonoBehaviour, ISkillable
         skillData.building.level = 5;
     }
 
-    void OnEnable()
-    {
-        skillData = SkillManager.LoadSkillData("Player" + skillableIndex.ToString());
-    }
-
-    void OnDisable()
-    {
-        SkillManager.SaveSkillData(skillData, "Player" + skillableIndex.ToString());
-    }
-
     void Update()
     {
         
