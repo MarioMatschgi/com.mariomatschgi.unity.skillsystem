@@ -10,6 +10,8 @@ using UnityEngine;
 [RequireComponent(typeof(PrefabListPanel))]
 public class SkillCanvas : MonoBehaviour
 {
+    public SkillListData skillListData;
+    
     private static List<ISkillable> m_skillables;
     public static List<ISkillable> skillables
     {
@@ -30,8 +32,20 @@ public class SkillCanvas : MonoBehaviour
      *  Callback Methodes
      * 
      */
-    
-    public static SkillCanvas instance { get; private set; }
+
+    static SkillCanvas m_instance;
+    public static SkillCanvas instance
+    {
+        get
+        {
+            // if (m_instance == null)
+            //     m_instance = GameObject.FindObjectOfType<SkillCanvas>();
+
+            return m_instance;
+        }
+        private set { m_instance = value; }
+    }
+
     void Awake()
     {
         #region Singleton
@@ -110,22 +124,4 @@ public class SkillCanvas : MonoBehaviour
      */
 
     #endregion
-}
-
-public enum SkillType
-{
-    [StringValue("None")]
-    None,
-    [StringValue("Crafting")]
-    Crafting,
-    [StringValue("Building")]
-    Building,
-    [StringValue("Foraging")]
-    Foraging,
-    [StringValue("Farming")]
-    Farming,
-    [StringValue("Hunting")]
-    Hunting,
-    [StringValue("Experience")]
-    Experience,
 }

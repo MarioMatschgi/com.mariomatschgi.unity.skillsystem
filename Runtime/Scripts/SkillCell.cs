@@ -20,7 +20,7 @@ public class SkillCell : MonoBehaviour, IPrefabListChild
     [Header("Outlets")]
     public TMP_Text nameText;
     public TMP_Text levelText;
-    public Slider slider;
+    public SimpleSlider slider;
 
 
     #region Callback Methodes
@@ -62,9 +62,9 @@ public class SkillCell : MonoBehaviour, IPrefabListChild
 
     public void UpdateCell()
     {
-        nameText.text = nameTextFormat.Replace("{name}", skillType.GetStringValue());
+        nameText.text = nameTextFormat.Replace("{name}", skillType.displayName);
         levelText.text = levelTextFormat.Replace("{cur}", SkillCanvas.skillables[skillableIndex].skillData.GetSkill(skillType).level.ToString())
-            .Replace("{max}", SkillCanvas.skillables[skillableIndex].skillData.GetMaxSkillLevel(skillType).ToString());
+            .Replace("{max}", SkillCanvas.skillables[skillableIndex].skillData.GetSkill(skillType).maxLevel.ToString());
         slider.value = SkillCanvas.skillables[skillableIndex].skillData.GetSkill(skillType).xp;
     }
 

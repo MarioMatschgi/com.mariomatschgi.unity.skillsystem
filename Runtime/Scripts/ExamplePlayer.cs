@@ -33,8 +33,6 @@ public class ExamplePlayer : MonoBehaviour, ISkillable
     {
         if (skillData == null)
             skillData = new SkillData();
-        
-        skillData.building.level = 5;
     }
 
     void Update()
