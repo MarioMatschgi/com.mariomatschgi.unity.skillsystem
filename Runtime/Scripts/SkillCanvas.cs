@@ -11,9 +11,9 @@ using UnityEngine;
 public class SkillCanvas : MonoBehaviour
 {
     public SkillListData skillListData;
-    
-    private static List<ISkillable> m_skillables;
-    public static List<ISkillable> skillables
+
+    private List<ISkillable> m_skillables;
+    private List<ISkillable> skillables
     {
         get
         {
@@ -43,7 +43,7 @@ public class SkillCanvas : MonoBehaviour
 
             return m_instance;
         }
-        private set { m_instance = value; }
+        set { m_instance = value; }
     }
 
     void Awake()
@@ -61,7 +61,7 @@ public class SkillCanvas : MonoBehaviour
 
     void Start()
     {
-        skillables = FindObjectsOfType<MonoBehaviour>().OfType<ISkillable>().OrderBy(o => o.skillableIndex).ToList();
+        skillables = FindObjectsOfType<MonoBehaviour>().OfType<ISkillable>().ToList();
         
         if (!Application.isPlaying)    // BC: ExecuteAllways
             return;
@@ -91,9 +91,10 @@ public class SkillCanvas : MonoBehaviour
 
     void Update()
     {
+        skillables = FindObjectsOfType<MonoBehaviour>().OfType<ISkillable>().ToList();
+        
         #if UNITY_EDITOR
         PrefabListPanel _plp = GetComponent<PrefabListPanel>();
-        skillables = FindObjectsOfType<MonoBehaviour>().OfType<ISkillable>().OrderBy(o => o.skillableIndex).ToList();
         if (_plp.amount != skillables.Count)
         {
             _plp.amount = skillables.Count;
@@ -113,6 +114,17 @@ public class SkillCanvas : MonoBehaviour
      *  Gameplay Methodes
      *
      */
+
+    public ISkillable GetSkillable(int _skillableIndex)
+    {
+        foreach (ISkillable _skillable in skillables)
+        {
+            if (_skillable.skillableIndex == _skillableIndex)
+                return _skillable;
+        }
+
+        return null;
+    }
 
     #endregion
 

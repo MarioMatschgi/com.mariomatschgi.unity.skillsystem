@@ -24,7 +24,7 @@ public class SkillPanel : MonoBehaviour, IPrefabListChild
 
     public void Setup()
     {
-        
+        GetComponent<PrefabListPanel>().RegenerateChildren(Application.isEditor);
     }
 
     public void SetupVariables(int _skillableIndex)
@@ -34,7 +34,7 @@ public class SkillPanel : MonoBehaviour, IPrefabListChild
 
     void Start()
     {
-        GetComponent<PrefabListPanel>().amount = Enum.GetValues(typeof(SkillType)).Length - 1;
+        GetComponent<PrefabListPanel>().amount = SkillCanvas.instance.skillListData.skills.Count;
 
         if (!Application.isPlaying)    // BC: ExecuteAllways
             return;

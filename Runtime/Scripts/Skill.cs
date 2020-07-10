@@ -11,7 +11,10 @@ public class SkillData
 
     public SkillData()
     {
-        List<Skill> _skills = SkillListData.GetSkills();
+        if (SkillCanvas.instance == null)
+            return;
+            
+        List<Skill> _skills = SkillCanvas.instance.skillListData.skills;
         
         for (int i = 0; i < _skills.Count; i++)
         {

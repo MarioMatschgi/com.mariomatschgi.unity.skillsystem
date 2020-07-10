@@ -16,7 +16,7 @@ public struct SkillType
 
     public SkillType(int _idx)
     {
-        SkillType _type = SkillListData.GetSkills()[_idx].type;
+        SkillType _type = SkillCanvas.instance.skillListData.skills[_idx].type;
         displayName = _type.displayName;
         index = _type.index;
     }

@@ -37,7 +37,7 @@ public class SkillCell : MonoBehaviour, IPrefabListChild
 
     public void SetupVariables(SkillType _skillType, int _skillableIndex)
     {
-        skillType = _skillType;
+        skillType = new SkillType(_skillType.index);
         skillableIndex = _skillableIndex;
     }
     
@@ -63,9 +63,9 @@ public class SkillCell : MonoBehaviour, IPrefabListChild
     public void UpdateCell()
     {
         nameText.text = nameTextFormat.Replace("{name}", skillType.displayName);
-        levelText.text = levelTextFormat.Replace("{cur}", SkillCanvas.skillables[skillableIndex].skillData.GetSkill(skillType).level.ToString())
-            .Replace("{max}", SkillCanvas.skillables[skillableIndex].skillData.GetSkill(skillType).maxLevel.ToString());
-        slider.value = SkillCanvas.skillables[skillableIndex].skillData.GetSkill(skillType).xp;
+        levelText.text = levelTextFormat.Replace("{cur}", SkillCanvas.instance.GetSkillable(skillableIndex).skillData.GetSkill(skillType).level.ToString())
+            .Replace("{max}", SkillCanvas.instance.GetSkillable(skillableIndex).skillData.GetSkill(skillType).maxLevel.ToString());
+        slider.value = SkillCanvas.instance.GetSkillable(skillableIndex).skillData.GetSkill(skillType).xp;
     }
 
     #endregion
